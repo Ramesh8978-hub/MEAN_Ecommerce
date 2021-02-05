@@ -1,0 +1,17 @@
+img{
+    height: 50px;
+    width: 50px;
+}
+.dropdown-toggle{
+    margin-top: -10px;
+}
+th,td{
+    text-align: center;
+}
+table {
+    width: 100%;
+    box-shadow: 2px 2px 4px 4px rgb(175, 174, 174);
+  }
+  mat-icon{
+    cursor: pointer;
+}

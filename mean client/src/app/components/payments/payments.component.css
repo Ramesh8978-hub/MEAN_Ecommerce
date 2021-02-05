@@ -1,0 +1,7 @@
+td,th{
+    text-align: center;
+}
+table {
+    width: 100%;
+    box-shadow: 2px 2px 4px 4px rgb(175, 174, 174);
+  }

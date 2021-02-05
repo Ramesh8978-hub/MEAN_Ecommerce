@@ -1,0 +1,82 @@
+<table class="table table-hover">
+    <thead class="table-info">
+        <tr>
+            <th>Sno</th>
+            <th>Name</th>
+            <th>Mobile No</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let address of addressList| filter:userDetails.email index as i">
+            <td *ngIf="editMode">
+                {{i+1}}
+            </td>
+            <td *ngIf="editMode">
+                {{address.name}}
+            </td>
+            <td *ngIf="editMode">
+                {{address.mobile}}
+            </td>
+            <td *ngIf="editMode">
+                {{address.address}}
+            </td>
+            <td *ngIf="editMode">
+                {{address.city}}
+            </td>
+            <td *ngIf="editMode">
+                {{address.state}}
+            </td>
+            <!-- <td *ngIf="editMode">
+                <div class="nav-item dropdown">
+                    <h3 class="account nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                      aria-haspopup="true">
+                </h3>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button type="button" class="btn btn-sm btn-outline-success btn-block" (click)="deleteAddress(address)">Select</button>
+                        <button type="button" class="btn btn-sm btn-outline-info btn-block" (click)="editAddress(address)">Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger btn-block" (click)="deleteAddress(address)">Delete</button>
+                    </div>
+                  </div>
+            </td> -->
+            <td *ngIf="editMode">
+                <button mat-stroked-button type="button" class="btn btn-sm btn-outline-info" matTooltip="Edit" (click)="editAddress(address)"> <mat-icon>edit</mat-icon></button> 
+                <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" matTooltip="Delete" (click)="deleteAddress(address)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+        <tr *ngIf="!editMode">
+            <td>
+               1
+            </td>
+            <td>
+                <input type="text" class="form-control" disabled name="name" [(ngModel)]="address.name">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="mobile" [(ngModel)]="address.mobile">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="address" [(ngModel)]="address.address">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="city" [(ngModel)]="address.city">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="state" [(ngModel)]="address.state">
+            </td>
+            <td>
+                <button type="button" class="btn btn-sm btn-success" (click)="updateAddress()">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- <div class="card">
+    <div class="card-body">
+       
+            <span>{{product.name}}</span>
+    </div>
+</div> -->

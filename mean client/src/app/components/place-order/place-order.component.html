@@ -1,0 +1,302 @@
+<div class="row">
+    <div class="col-sm-2">
+        <button mat-raised-button color="primary" class="btn-block" (click)="goToShop()">
+            <mat-icon>reply</mat-icon> Go To Shop
+        </button>
+    </div>
+    <div class="col-sm-10"></div>
+</div>
+<hr>
+<div class="card">
+    <div class="row content-header">
+        <div class="col-sm-12 alert-success">
+            <h2>Select Your Address.</h2>
+        </div>
+        <button *ngIf="!hideBuyButton"  (click)="goToShop()" class="btn btn-secondary btn-block">No Data Found</button>
+    </div>
+    <div *ngIf="hideBuyButton" class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Address</h3>
+                </div>
+                <div class="btn-group">
+                    <button mat-stroked-button color="primary" class="btn btn-outline-secondary active" (click)="selectToAddress()">Select Address</button>
+                    <button mat-stroked-button color="warn" class="btn btn-outline-success" (click)="newToAddress()">New Address</button>
+                </div>
+                <div class="card-body" *ngIf="selectAddress">
+                    <div *ngFor="let address of addressList| filter:userDetails.email">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>Name</th>
+                                <td>{{address.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{address.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td>{{address.mobile}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{address.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{address.city}}</td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td>{{address.state}}</td>
+                            </tr><br>
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-success btn-block"
+                                        (click)="done(address)">Done</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-body" *ngIf="newAddress">
+                    <form #addressForm="ngForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" [(ngModel)]="userDetails.fullName" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" [(ngModel)]="userDetails.email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" name="city" [(ngModel)]="address.city" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="mobile">Mobile</label>
+                                    <input type="text" name="mobile" [(ngModel)]="address.mobile" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" [(ngModel)]="address.address" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" name="state" [(ngModel)]="address.state" ngModel
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3>Placed Orders</h3>
+                </div>
+                <!-- <button *ngIf="!hideBuyButton" class="btn btn-secondary btn-block">No Data Found</button> -->
+                <div class="card-body" *ngIf="hideBuyButton">
+                    <!-- //// Product Data  /// -->
+                    <div class="row" *ngIf="productData">
+                        <div class="col-sm-6">
+                            <img [src]="product.imagePath" [alt]="product.name" />
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{product.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>{{product.price | currency:"INR"}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td>{{product.qty}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //// Cart Data  /// -->
+                    <div class="row" *ngIf="cartdata">
+                        <div class="col-sm-6">
+                            <img [src]="cart.imagePath" [alt]="cart.name" />
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{cart.name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Price</th>
+                                    <td>{{cart.price | currency:"INR"}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <td>{{cart.qty}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <button *ngIf="hideBuyButton&&paymentCard" mat-raised-button class="btn-block btn-success" (click)="makePayment()">Payment</button>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+<div class="card" *ngIf="selectPaymentMethod">
+    <div class="row content-header">
+        <div class="col-sm-12 alert-success">
+            <h2>Select Payment Method.</h2>
+        </div>
+        <button *ngIf="!hideBuyButton" class="btn btn-secondary btn-block">No Data Found</button>
+    </div>
+    <div class="row" *ngIf="hideBuyButton">
+        <div class="col-sm-12">
+            <table class="table table-hover">
+                <thead class="table-info">
+                    <tr>
+                        <th>Sno</th>
+                        <th>Holder Name</th>
+                        <th>Bank Name</th>
+                        <th>Card Type</th>
+                        <th>Card Number</th>
+                        <th>CVV</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let payment of paymentList| filter:userDetails.email index as i">
+                        <td *ngIf="editMode">
+                            {{i+1}}
+                        </td>
+                        <td *ngIf="editMode">
+                            {{payment.name}}
+                        </td>
+                        <td *ngIf="editMode">
+                            {{payment.bankName}}
+                        </td>
+                        <td *ngIf="editMode">
+                            {{payment.cardType}}
+                        </td>
+                        <td *ngIf="editMode">
+                            {{payment.cardNumber}}
+                        </td>
+                        <td *ngIf="editMode">
+                            {{payment.cvv}}
+                        </td>
+                        <td *ngIf="editMode">
+                            <button mat-stroked-button type="button" class="btn btn-sm btn-outline-info"
+                                (click)="editPayment(payment)">Select</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!editMode">
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" disabled name="name" [(ngModel)]="payment.name">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="bankName" [(ngModel)]="payment.bankName">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="cardType" [(ngModel)]="payment.cardType">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="cardNumber" [(ngModel)]="payment.cardNumber">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="cvv" [(ngModel)]="payment.cvv">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-success" (click)="updatePayment()">Done</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="card"  *ngIf="makePaymentHere">
+    <div class="row content-header">
+        <div class="col-sm-12 alert-success">
+            <h2>Make Payment Here.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+             <div class="card">
+                <div class="card-body">
+                    <div>
+                        <label for="amount">Product Amount</label>
+                        <input *ngIf="productData" disabled type="text" name="price" [(ngModel)]="product.price" class="form-control">
+                        <input *ngIf="cartdata" disabled type="text" name="price" [(ngModel)]="cart.price" class="form-control"><hr>
+
+                     <button *ngIf="hideBuyButton" mat-raised-button class="btn-block btn-success"
+                            (click)="buyProduct()">Buy</button>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+
+
+
+
+<form *ngIf="formHide">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="product.name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" [(ngModel)]="userDetails.email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" name="price" [(ngModel)]="product.price" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="qty">Qty</label>
+                <input type="text" name="qty" [(ngModel)]="product.qty" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="imagePath">Image</label>
+                <input type="text" name="imagePath" [(ngModel)]="product.imagePath" class="form-control">
+            </div>
+        </div>
+
+    </div>
+</form>

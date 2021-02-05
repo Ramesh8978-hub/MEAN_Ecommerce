@@ -1,0 +1,13 @@
+.icon{
+    color: red;
+}
+.card {
+    margin: 10px;
+    border: 2px solid rgb(207, 207, 207);
+  }
+  .card:hover{
+    border: 2px solid rgb(8, 8, 8);
+    box-shadow: 2px 2px 4px 4px gray;
+  }
+ 
+ 

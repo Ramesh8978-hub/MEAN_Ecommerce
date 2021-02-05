@@ -1,0 +1,17 @@
+img{
+    width: 150px;
+    height: 150px;
+}
+.card{
+    margin: 10px;
+    
+}
+.icon{
+    color: red;
+}
+.center{
+    margin-top: 30px;
+}
+.content-header{
+    margin: 5px;
+    }

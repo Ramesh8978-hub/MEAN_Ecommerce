@@ -1,0 +1,14 @@
+img{
+    height: 100px;
+    width: 100px;
+}
+th,td{
+    text-align: center;
+}
+.center{
+    margin-top: 30px;
+}
+table {
+    width: 100%;
+    box-shadow: 2px 2px 4px 4px rgb(175, 174, 174);
+  }

@@ -1,0 +1,21 @@
+<div class="alert alert-success" *ngIf="showSuccessMessage">
+    Saved Successfully
+</div>
+<div class="alert alert-danger" *ngIf="serverErrorMessage">
+    {{serverErrorMessage}}
+</div>
+<form #signUpForm="ngForm" (ngSubmit)="onSubmit(signUpForm)">
+    <div class="form-group">
+        <label for="fullName">Fullname</label>
+        <input type="text" id="fullName" class="form-control" name="fullName" ngModel required fullName>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" name="email" ngModel required email>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" class="form-control" name="password" ngModel required password>
+    </div>
+    <input type="submit" value="Register" class="btn btn-success btn-block">
+</form>

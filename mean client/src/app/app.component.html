@@ -1,0 +1,32 @@
+<app-navbar *ngIf="!isLoggedIn"></app-navbar>
+<!-- <app-admin-header *ngIf="isLoggedIn"></app-admin-header> -->
+
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['products']">Products</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['orders']">Orders </a>
+      </li>
+      <!-- <li class="nav-item active">
+        <a class="nav-link" [routerLink]="" (click)="onLogout()">Logout</a>
+      </li> -->
+    </ul>
+    <div class="logout">
+        <a  [routerLink]="" (click)="onLogout()">Logout</a>
+    </div>
+  </div>
+
+</nav>
+<br>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

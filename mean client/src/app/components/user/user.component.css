@@ -1,0 +1,21 @@
+.header{
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+.signIn{
+    background-color: rgb(63, 109, 63);
+    padding: 10px;
+    color: white;
+}
+.signIn:hover{
+    background-color: green;
+}
+.signUp{
+    background-color: rgb(212, 31, 31);
+    padding: 10px;
+    color: white;
+}
+.signUp:hover{
+    background-color: red;
+}

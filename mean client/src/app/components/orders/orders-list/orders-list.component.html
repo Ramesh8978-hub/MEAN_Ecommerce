@@ -1,0 +1,95 @@
+<div class="row">
+    <div class="col-sm-2">
+        <button  mat-raised-button color="primary" class="btn-block" (click)="goToShop()"><mat-icon>reply</mat-icon> Go To Shop</button>
+    </div>
+    <div class="col-sm-10"></div>
+</div>
+<hr>
+<table class="table table-hover">
+    <thead class="table-info">
+        <tr>
+            <th>Sno</th>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Order Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let orderByProduct of orderByProductList| filter:userDetails.email index as i">
+            <td>
+                <div class="center">
+                    {{i+1}}
+                </div>
+            </td>
+            <td>
+                <img [src]="orderByProduct.imagePath" alt="{{orderByProduct.name}}">
+            </td>
+            <td>
+                <div class="center">
+                    {{orderByProduct.name}}
+                </div>
+            </td>
+            <td>
+                <div class="center">
+                    {{orderByProduct.qty}}
+                </div>
+            </td>
+            <td>
+                <div class="center">
+                    <strong>
+                        {{orderByProduct.price | currency:"INR"}}
+                    </strong>
+                </div>
+            </td>
+            <td>
+                <div class="center">
+                        {{orderByProduct.status}}
+                </div>
+            </td>
+            <td>
+                <div class="center">
+                    <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteOrderByProduct(orderByProduct)">Order Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<!-- 
+ <div >
+    <table mat-table [dataSource]="orderByProductList" class="mat-elevation-z8">
+        <ng-container matColumnDef="imagePath">
+            <th mat-header-cell *matHeaderCellDef> ImagePath </th>
+            <td mat-cell *matCellDef="let orderByProduct"> 
+                <img [src]="orderByProduct.imagePath" alt="{{orderByProduct.name}}">
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let orderByProduct"> {{orderByProduct.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="qty">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let orderByProduct"> {{orderByProduct.qty}} </td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let orderByProduct"> {{orderByProduct.price}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let orderByProduct">
+                <button mat-raised-button color="warn" (click)="deleteOrderByProduct(orderByProduct)">Order Cancel</button>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> 
+ </div> -->

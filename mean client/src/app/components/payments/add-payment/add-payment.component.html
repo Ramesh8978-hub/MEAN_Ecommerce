@@ -1,0 +1,51 @@
+<form #addressForm="ngForm" (ngSubmit)="addCard(addressForm)">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" [(ngModel)]="userDetails.fullName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="bankName">Bank Name</label>
+                <select name="bankName" ngModel class="form-control">
+                    <option selected disabled>--select--</option>
+                    <option value="sbi bank">SBI BANK</option>
+                    <option value="kotak mahendra bank">KOTAK MAHENDRA BANK</option>
+                    <option value="andhra bank">ANDHRA BANK</option>
+                    <option value="paytm payments bank">PAYTM PAYMENTS BANK</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" name="cardNumber" ngModel class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" [(ngModel)]="userDetails.email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="cardType">Card Type</label>
+                <select name="cardType" ngModel class="form-control">
+                    <option selected disabled>--select--</option>
+                    <option value="debit card">Debit Card</option>
+                    <option value="credit card">Credit Card</option>
+                </select>          
+              </div>
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" name="cvv" ngModel class="form-control">
+            </div>
+        </div>
+    </div><hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <mat-dialog-actions align="end">
+                <button type="submit" mat-raised-button color="primary" mat-dialog-close>Add Card</button>
+            </mat-dialog-actions>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    
+</form>

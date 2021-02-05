@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-2">
+        <button mat-raised-button color="primary" class="btn-block" (click)="goToShop()">
+            <mat-icon>reply</mat-icon> Go To Shop
+        </button>
+    </div>
+</div>
+<hr>
+<div class="card">
+    <div class="row content-header">
+        <div class="col-sm-12 alert-success">
+            <h2>Personal Information.</h2>
+        </div>
+    </div>
+    <div class="card content-header">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <label for="name">Name:</label>
+                <h2>{{userDetails.fullName}}</h2>
+            </div>
+            <div class="col-sm-4">
+                <label for="email">Email Id:</label>
+               <h2>{{userDetails.email}}</h2>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+   
+</div>
+<br>
+<div class="card">
+    <div class="row content-header">
+        <div class="col-sm-10 alert-success">
+            <h2>Address.</h2>
+        </div>
+        <div class="col-sm-2">
+            <button mat-stroked-button color="default" type="button" class="btn btn-outline-success btn-block"
+                (click)="addAddress()">
+                <mat-icon>add</mat-icon> Add Address
+            </button>
+        </div>
+    </div>
+    <div class="row content-header">
+        <div class="col-sm-12">
+            <app-address-list></app-address-list>
+        </div>
+    </div>
+</div>
+<br>
+<div class="card">
+    <div class="row content-header">
+        <div class="col-sm-10 alert-success">
+            <h2>Card Details.</h2>
+        </div>
+        <div class="col-sm-2">
+            <button mat-stroked-button color="default" type="button" class="btn btn-outline-success btn-block"
+                (click)="addCard()">
+                <mat-icon>add</mat-icon> Add Card
+            </button>
+        </div>
+    </div>
+    <div class="row content-header">
+        <div class="col-sm-12">
+            <app-payments></app-payments>
+        </div>
+    </div>
+</div>

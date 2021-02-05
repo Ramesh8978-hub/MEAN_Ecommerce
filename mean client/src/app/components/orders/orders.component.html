@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="col-sm-2">
+        <button mat-raised-button color="primary" class="btn-block" (click)="goToShop()">
+            <mat-icon>reply</mat-icon> Go To Products
+        </button>
+    </div>
+    <div class="col-sm-10"></div>
+</div>
+<hr>
+<div class="row">
+        <div class="col-sm-6">
+            <table class="table table-hover">
+                <thead class="table-info">
+                    <tr>
+                        <th>Sno</th>
+                        <th>Name</th>
+                        <th>Mobile No</th>
+                        <th>Address</th>
+                        <th>Payment_Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let orderByUser of orderByUserList;index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{orderByUser.name}}</td>
+                        <td>{{orderByUser.mobile}}</td>
+                        <td>
+                            <div class="nav-item dropdown">
+                                <span class="account nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Address
+                                </span>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item">Mdl : {{orderByUser.address}}</a>
+                                    <a class="dropdown-item">City : {{orderByUser.city}}</a>
+                                    <a class="dropdown-item">State : {{orderByUser.state}}</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            Successfull
+                        </td>
+                        <td>
+                            <button mat-stroked-button  matTooltip="view" matTooltipPosition="after" color="warn" class="btn-outline-success"  (click)="viewOrderByProductTable(orderByUser)">
+                                <mat-icon>visibility</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="col-sm-6" *ngIf="orderByProductTable">
+        <table class="table table-info">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Image</th>
+                    <th>Product_Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="noData" class="table-info text-center">
+                    <td>No Data Found</td>
+                </tr>
+                <tr *ngFor="let orderByProduct of orderByProductList| filter:email index as i">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <img [src]="orderByProduct.imagePath" alt="{{orderByProduct.name}}">
+                    </td>
+                    <td>{{orderByProduct.name}}</td>
+                    <td>{{orderByProduct.qty}}</td>
+                    <td>{{orderByProduct.price | currency:"INR"}}</td>
+                    <td>{{orderByProduct.status}}</td>
+                    <td>
+                        <button mat-stroked-button color="warn" class="btn-outline-success" (click)="updateOrderStatus(orderByProduct)">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <table class="table table-info">
+        <thead>
+            <tr>
+                <th>Sno</th>
+                <th>Image</th>
+                <th>Product_Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="noData" class="table-info text-center">
+                <td>No Data Found</td>
+            </tr>
+            <tr *ngFor="let orderByProduct of orderByProductList| filter:email index as i">
+                <td>{{i+1}}</td>
+                <td>
+                    <img [src]="orderByProduct.imagePath" alt="{{orderByProduct.name}}">
+                </td>
+                <td>{{orderByProduct.name}}</td>
+                <td>{{orderByProduct.qty}}</td>
+                <td>{{orderByProduct.price | currency:"INR"}}</td>
+                <td>{{orderByProduct.status}}</td>
+                <td>
+                    <button mat-stroked-button color="warn" class="btn-outline-success" (click)="updateOrderStatus(orderByProduct)">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+   -->

@@ -1,0 +1,26 @@
+<form #addressForm="ngForm" (ngSubmit)="updateOrderStatus(addressForm)">
+    <div class="row">
+        <div class="col-sm-12">
+            <input type="hidden" name="_id" [(ngModel)]="orderByProduct._id"  class="form-control">
+            <div class="form-group">
+                <label for="status">Order Status</label>
+                <select name="status" [(ngModel)]="orderByProduct.status" class="form-control">
+                    <option selected disabled>--select--</option>
+                    <option value="order pending">Order Pending</option>
+                    <option value="order picked">Order Picked</option>
+                    <option value="order packed">Order Packed</option>
+                    <option value="order delivered">Order Delivered</option>
+                    <option value="order cancel">Order Cancel</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-dialog-actions align="end">
+                <button type="submit" mat-raised-button color="primary" mat-dialog-close>Update Status</button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+    
+</form>

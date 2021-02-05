@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-sm-11">
+    <h1>Today's Deals</h1>
+  </div>
+  <div class="col-sm-1">
+    <div class="float-right">
+      <button mat-raised-button color="primary" matTooltip="Add product" *ngIf="isLoggedIn" (click)="newProduct()">
+        <mat-icon>add</mat-icon> Add Product
+      </button>
+    </div>
+  </div>
+</div>
+<hr />
+
+<div class="row" @listAnimation>
+  <div class="col-sm-12">
+    <mat-tab-group>
+      <mat-tab label="All">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | paginate:{itemsPerPage:8,currentPage:p};"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+        </div>
+      <pagination-controls class="float-right" (pageChange)="p = $event"></pagination-controls>
+      
+      </mat-tab>
+      <mat-tab label="Shoes">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | filter:Shoes"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Sandals">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | filter:Sandals"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Watches">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | filter:Watches"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Earphone">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | filter:Earphone"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+          </div>
+      </mat-tab>
+      <mat-tab label="Trimmer">
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let product of products | filter:Trimmer"
+              class="product">
+              <app-products-data [productData]="product"></app-products-data>
+            </div>
+          </div>
+          </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+
+
+
+
+

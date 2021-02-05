@@ -1,0 +1,64 @@
+
+<table class="table table-hover">
+    <thead class="table-info">
+        <tr>
+            <th>Sno</th>
+            <th>Name</th>
+            <th>Bank Name</th>
+            <th>Card Type</th>
+            <th>Card Number</th>
+            <th>CVV</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor="let payment of paymentList| filter:userDetails.email index as i">
+            <td *ngIf="editMode">
+                {{i+1}}
+            </td>
+            <td *ngIf="editMode">
+                {{payment.name}}
+            </td>
+            <td *ngIf="editMode">
+                {{payment.bankName}}
+            </td>
+            <td *ngIf="editMode">
+                {{payment.cardType}}
+            </td>
+            <td *ngIf="editMode">
+                {{payment.cardNumber}}
+            </td>
+            <td *ngIf="editMode">
+                {{payment.cvv}}
+            </td>
+            <td *ngIf="editMode">
+                <button mat-stroked-button type="button" class="btn btn-sm btn-outline-info" matTooltip="Edit" (click)="editPayment(payment)"><mat-icon>edit</mat-icon></button> 
+                <button mat-stroked-button type="button" class="btn btn-sm btn-outline-danger" matTooltip="Delete" (click)="deletePayment(payment)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+        <tr *ngIf="!editMode">
+            <td>
+               1
+            </td>
+            <td>
+                <input type="text" class="form-control" disabled name="name" [(ngModel)]="payment.name">
+            </td>
+            <td>
+                <input type="text" class="form-control" disabled name="bankName" [(ngModel)]="payment.bankName">
+            </td>
+            <td>
+                <input type="text" class="form-control" disabled name="cardType" [(ngModel)]="payment.cardType">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="cardNumber" [(ngModel)]="payment.cardNumber">
+            </td>
+            <td>
+                <input type="text" class="form-control" name="cvv" [(ngModel)]="payment.cvv">
+            </td>
+            <td>
+                <button type="button" class="btn btn-sm btn-success" (click)="updatePayment()">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

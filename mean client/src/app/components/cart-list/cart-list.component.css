@@ -1,0 +1,23 @@
+.image{
+    width: 150px;
+    height: 120px;
+}
+tbody,thead{
+    text-align: center;
+}
+
+.sno,.name,.price,.button-group,.qty{
+    margin-top: 40px;
+}
+.qty span{
+    border: 1px solid gray;
+    padding: 1px 40px;
+}
+/* .button{
+    margin-top: 40px;
+    margin: 2px;
+} */
+table {
+    width: 100%;
+    box-shadow: 2px 2px 4px 4px rgb(175, 174, 174);
+  }
